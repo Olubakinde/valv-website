@@ -1,12 +1,78 @@
 import "./App.css";
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import valvImage from "./assets/valv.png";
 import heroSideImage from "./assets/image1.png";
 import heroSideImage2 from "./assets/image2.png";
 import heroSideImage3 from "./assets/image3.png";
-
 import presentationVideo from "./assets/Valv.mp4";
 
+gsap.registerPlugin(ScrollTrigger);
+
 function App() {
+  useEffect(() => {
+    gsap.from(".hero-text", {
+      opacity: 0,
+      y: -100,
+      duration: 1,
+    });
+    gsap.to(".hero-text", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+
+    });
+
+    gsap.from(".sub-text", {
+      opacity: 0,
+      y: -50,
+      duration: 1,
+    });
+    gsap.to(".sub-text", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+
+    })
+
+    gsap.from(".hero-side-image", {
+      opacity: 0,
+      x: 100,
+      duration: 1,
+    });
+    gsap.to(".hero-side-image", {
+      opacity: 1,
+      x: -5,
+      duration: 1,
+    })
+
+    gsap.from(".hero-side-image2", {
+      opacity: 0,
+      y: -50,
+      duration: 1,
+    });
+    
+    gsap.to(".hero-side-image2", {
+      opacity: 1,
+      y: 10,
+      duration: 1,
+
+    })
+
+    gsap.from(".hero-side-image3", {
+      opacity: 1,
+      x: 100,
+      duration: 1,
+    });
+    gsap.to(".hero-side-image3", {
+      opacity: 1,
+      x: -5,
+      duration: 1,
+
+    })
+  }, []);
+
   return (
     <div>
       {/* Navbar */}
@@ -50,7 +116,7 @@ function App() {
       <section className="video-section" id="video">
         <h2>Watch Our Presentation</h2>
         <video controls className="app-video">
-          <source src={presentationVideo} type="video/mp4" />
+          <source src={presentationVideo} type="video/mp4"/>
           Your browser does not support the video tag.
         </video>
       </section>
